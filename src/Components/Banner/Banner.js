@@ -1,19 +1,13 @@
-import { height } from '@mui/system';
 import React, {  useState , useEffect } from 'react'
 import {baseUrl , imgUrl , apiKey } from '../../Constants/constants';
 
 
 function Banner() {
     
+    
   const [bannerMovie, setbannerMovie] = useState('');
   const [loading, setLoading] = useState(true)
   const reqUrl = `${baseUrl}movie/now_playing?api_key=${apiKey}&language=en-US`;
-//   const getNowPlaying = async () => {
-//       const nowPlayingResponse = await fetch(reqUrl);
-//       const nowPlaying = await nowPlayingResponse.json();
-//       let randomNumber = Math.floor(Math.random() * 10) + 1;
-//       return nowPlaying.results[randomNumber];
-//   }
 
 
   useEffect( () => {
@@ -29,7 +23,6 @@ function Banner() {
     
   }, []);
 
-  console.log(bannerMovie);
 
   if(loading) {
     return(
@@ -37,7 +30,8 @@ function Banner() {
             Loading
         </div>
     )
-  } else {
+  } 
+  else {
     return(
         <div style={{backgroundImage: `url(${imgUrl+bannerMovie.backdrop_path})`}} className='banner'>
             <h1 className='movie-title'>
